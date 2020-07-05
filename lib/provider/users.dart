@@ -24,7 +24,7 @@ class Users with ChangeNotifier {
       return;
     }
 
-    if (user.id != null && user.id.trim().isEmpty && _items.containsKey(user.id)) {
+    if (user.id != null && _items.containsKey(user.id)) {
       _items.update(user.id, (_) => User(
         id: user.id,
         name: user.name,
@@ -34,7 +34,7 @@ class Users with ChangeNotifier {
     } else {
       final id = Random().nextDouble().toString();
       _items.putIfAbsent(id, () => User(
-        id: '1000',
+        id: id,
         name: user.name,
         email: user.email,
         avatarUrl: user.avatarUrl,
